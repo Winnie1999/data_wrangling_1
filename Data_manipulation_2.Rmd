@@ -83,3 +83,12 @@ You may also use %in% to detect if values appear in a set
 filter(litters_df, group  %in% c("Con7","Mod8") )
 ```
 
+## Mutate
+modify some existing variable or create new variable
+
+```{r}
+mutate(litters_df, 
+       wt_gain = gd18_weight - gd0_weight,
+       group = str_to_lower(group))
+```
+
