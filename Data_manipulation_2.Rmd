@@ -18,7 +18,7 @@ litters_df = janitor::clean_names(litters_df)
 
 ## select
 
-Choose some colums but not others
+Choose some columns but not others
 
 ```{r}
 select(litters_df,group, gd0_weight:gd_of_birth)
@@ -56,5 +56,30 @@ select(litters_df, litter_number, everything())
 
 ```{r}
 relocate(litters_df,litter_number)
+```
+
+## filter
+
+remove rows or keep rows that you are interested in retaining
+
+```{r}
+filter(litters_df, gd0_weight < 22)
+```
+
+```{r}
+filter(litters_df, gd0_weight == 20)
+```
+
+```{r}
+filter(litters_df, gd_of_birth != 20)
+```
+
+```{r}
+filter(litters_df, gd0_weight >= 22, gd_of_birth == 20)
+```
+You may also use %in% to detect if values appear in a set
+
+```{r}
+filter(litters_df, group  %in% c("Con7","Mod8") )
 ```
 
