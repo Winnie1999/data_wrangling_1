@@ -16,3 +16,45 @@ litters_df = read.csv("./data/FAS_litters.csv")
 litters_df = janitor::clean_names(litters_df)
 ```
 
+## select
+
+Choose some colums but not others
+
+```{r}
+select(litters_df,group, gd0_weight:gd_of_birth)
+```
+
+get rid of certain column
+
+```{r}
+select(litters_df, -litter_number)
+```
+
+Renaming columns
+while identifying the column want to keep
+
+```{r}
+select(litters_df, GROUP = group, LITTER_number = litter_number)
+```
+
+Keep everything but rename columns
+
+```{r}
+rename(litters_df, GROUP = group, LITTER_number = litter_number)
+```
+
+Select helpers
+
+```{r}
+select(litters_df, starts_with("gd"))
+```
+move litter_number to the beginning
+
+```{r}
+select(litters_df, litter_number, everything())
+```
+
+```{r}
+relocate(litters_df,litter_number)
+```
+
