@@ -1,0 +1,18 @@
+---
+title: "Data_manipulation_2"
+author: "Yiqun Jin"
+date: "10/8/2021"
+output: github_document
+---
+
+```{r setup}
+library(tidyverse)
+```
+
+## Load in the FAS litters Data
+
+```{r}
+litters_df = read.csv("./data/FAS_litters.csv")
+litters_df = janitor::clean_names(litters_df)
+```
+
