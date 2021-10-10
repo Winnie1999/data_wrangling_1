@@ -98,3 +98,9 @@ mutate(litters_df,
 arrange(litters_df, pups_born_alive)
 ```
 
+## %>%
+
+```{r}
+%>% 
+```
+
