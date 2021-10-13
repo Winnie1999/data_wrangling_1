@@ -127,7 +127,7 @@ litters_df =
 litters_df
 ```
 
-NExt up, time to join them!
+Next up, time to join them!
 
 ```{r}
 fas_df = 
