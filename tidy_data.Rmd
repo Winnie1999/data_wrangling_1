@@ -1,27 +1,24 @@
 ---
-title: "data_manipulation"
+title: "Tidy Data"
 output: github_document
 ---
 
 ```{r}
 library(tidyverse)
-library(dplyr) 
-library(readxl)
-library(haven)
 ```
 
-## Import some data
+## `pivot_longer`
 
+Import the PULSE data
 
 ```{r}
-options(tibble.print_min = 5)
-
 pulse_df = 
-  read_sas("./data/public_pulse_data.sas7bdat")
+  sas7bdat::read.sas7bdat("./data/public_pulse_data.sas7bdat")
+
 ```
 
+
 ```{r}
-pulse_df
 
 pulse_tidy = 
   pulse_df %>%

@@ -1,0 +1,106 @@
+---
+title: "Data_manipulation_2"
+author: "Yiqun Jin"
+date: "10/8/2021"
+output: github_document
+---
+
+```{r setup}
+library(tidyverse)
+```
+
+## Load in the FAS litters Data
+
+```{r}
+litters_df = read.csv("./data/FAS_litters.csv")
+litters_df = janitor::clean_names(litters_df)
+```
+
+## select
+
+Choose some columns but not others
+
+```{r}
+select(litters_df,group, gd0_weight:gd_of_birth)
+```
+
+get rid of certain column
+
+```{r}
+select(litters_df, -litter_number)
+```
+
+Renaming columns
+while identifying the column want to keep
+
+```{r}
+select(litters_df, GROUP = group, LITTER_number = litter_number)
+```
+
+Keep everything but rename columns
+
+```{r}
+rename(litters_df, GROUP = group, LITTER_number = litter_number)
+```
+
+Select helpers
+
+```{r}
+select(litters_df, starts_with("gd"))
+```
+move litter_number to the beginning
+
+```{r}
+select(litters_df, litter_number, everything())
+```
+
+```{r}
+relocate(litters_df,litter_number)
+```
+
+## filter
+
+remove rows or keep rows that you are interested in retaining
+
+```{r}
+filter(litters_df, gd0_weight < 22)
+```
+
+```{r}
+filter(litters_df, gd0_weight == 20)
+```
+
+```{r}
+filter(litters_df, gd_of_birth != 20)
+```
+
+```{r}
+filter(litters_df, gd0_weight >= 22, gd_of_birth == 20)
+```
+You may also use %in% to detect if values appear in a set
+
+```{r}
+filter(litters_df, group  %in% c("Con7","Mod8") )
+```
+
+## Mutate
+modify some existing variable or create new variable
+
+```{r}
+mutate(litters_df, 
+       wt_gain = gd18_weight - gd0_weight,
+       group = str_to_lower(group))
+```
+
+## arrange
+
+```{r}
+arrange(litters_df, pups_born_alive)
+```
+
+## %>%
+
+```{r}
+%>% 
+```
+
