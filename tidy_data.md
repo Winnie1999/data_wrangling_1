@@ -2232,3 +2232,39 @@ pulse_df =
   relocate(id,visit) %>% 
   mutate(visit = recode(visit, "bl" = "00m")) # bl means baseline
 ```
+
+## `pivot_wider`
+
+Make up some data!
+
+``` r
+analysis_result = 
+  tibble(
+    group = c("treatment","treatment","placebo","placebo"),
+    time = c("pre", "post", "pre", "post"),
+    mean = c(4, 8, 3.5, 4)
+  )
+analysis_result %>% 
+  pivot_wider(
+    names_from = "time",
+    values_from = "mean"
+  )
+```
+
+    ## # A tibble: 2 × 3
+    ##   group       pre  post
+    ##   <chr>     <dbl> <dbl>
+    ## 1 treatment   4       8
+    ## 2 placebo     3.5     4
+
+``` r
+analysis_result
+```
+
+    ## # A tibble: 4 × 3
+    ##   group     time   mean
+    ##   <chr>     <chr> <dbl>
+    ## 1 treatment pre     4  
+    ## 2 treatment post    8  
+    ## 3 placebo   pre     3.5
+    ## 4 placebo   post    4
